@@ -1,82 +1,44 @@
-import React, { useState } from 'react';
-import {
-    Text,
-    View,
-    TextInput,
-    TouchableOpacity,
-} from 'react-native';
+import React from 'react';
+import { Text, View } from 'react-native';
 import styles from './styles';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { useNavigation } from '@react-navigation/native'
-import auth from '@react-native-firebase/auth'
+import { useNavigation } from '@react-navigation/native';
 import { Brand } from '../../../components/Logo/Brand';
-
+import Input from '../components/Inputs/Inputs';
+import { Button } from '../components/Button/Button';
+import useSignIn from '../../../hooks/useSignIn';
+import { SubButton } from '../components/SubButton/SubButton';
 
 const SingInScreen = () => {
-    const [hidePass, setHidePass] = useState(true);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const navigation = useNavigation();
-
-    function singIn() {
-        auth().signInWithEmailAndPassword(email, password).then(() => navigation.navigate('SplashScreen')).catch(error => console.log(error))
-    }
+    const navigation = useNavigation<any>();
+    const { email, password, setEmail, setPassword, signIn } = useSignIn();
 
     return (
-        <>
-            <View style={styles.container}>
-                <Brand />
-                <Text style={styles.slogan}>Cuidado que faz a diferença!</Text>
-                <View style={styles.form}>
-                    <View>
-                        <TextInput
-                            style={{
-                                ...styles.placeholder,
-                                marginTop: 70,
-                            }}
-                            placeholder="E-mail"
-                            placeholderTextColor={'rgb(90,90,90)'}
-                            value={email}
-                            onChangeText={setEmail} />
-                        <View>
-                            <TextInput
-                                style={styles.placeholder}
-                                placeholder="Password"
-                                placeholderTextColor={'rgb(90,90,90)'}
-                                value={password}
-                                onChangeText={setPassword}
-                                secureTextEntry={hidePass} />
-                            <TouchableOpacity
-                                style={styles.hide}
-                                onPress={() => setHidePass(!hidePass)}>
-                                {hidePass ? (
-                                    <MaterialCommunityIcons name="eye" size={22} color={'rgb(90,90,90)'} />
-                                ) : (
-                                    <MaterialCommunityIcons
-                                        name="eye-off"
-                                        size={22}
-                                        color={'rgb(90,90,90)'}
-                                    />
-                                )}
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                    <View style={styles.singUp}>
-                        <View>
-                            <TouchableOpacity style={{ ...styles.entrar, marginTop: 15 }} onPress={singIn}>
-                                <Text style={styles.enter}>Entrar </Text>
-                            </TouchableOpacity>
-                        </View>
-                    </View>
-                    <View style={styles.singUp}>
-                        <Text style={styles.textSingUp}>Não possui cadastro ?</Text>
-                        <TouchableOpacity onPress={() => navigation.navigate('SingUpScreen')}>
-                            <Text style={styles.textButtonSingUp}>Cadastre-se</Text>
-                        </TouchableOpacity>
-                    </View>
+        <View style={styles.container}>
+            <View style={styles.form}>
+                <View style={styles.brand}>
+                    <Brand />
+                    <Text style={styles.slogan}>Cuidado que faz a diferença!</Text>
                 </View>
+                <View>
+                    <Input
+                        placeholder="E-mail"
+                        onChangeText={setEmail}
+                        value={email}
+                        keyboard="email-address"
+                    />
+                    <Input
+                        id={2}
+                        placeholder="Senha"
+                        onChangeText={setPassword}
+                        value={password}
+                    />
+                </View>
+                <View style={styles.singUp}>
+                    <Button onPress={() => signIn(navigation)} title='Entrar' />
+                </View>
+                <SubButton title='Cadastre-se' question='Não possui cadastro ?' onPress={() => navigation.navigate('SingUpScreen')} />
             </View>
-        </>
+        </View>
     );
 };
 

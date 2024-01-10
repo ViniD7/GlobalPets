@@ -3,14 +3,16 @@ import React from 'react';
 import { StatusBar } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import Routes from './src/navigation/routes';
-
+import { AppointmentsProvider } from './src/context/AppointmentsContext/AppointmentsContext';
 
 const App = () => {
   return (
-    <NavigationContainer>
-      <StatusBar backgroundColor="transparent" translucent={true} />
-      <Routes />
-    </NavigationContainer>
+    <AppointmentsProvider>
+      <NavigationContainer>
+        <StatusBar backgroundColor="transparent" translucent={true} />
+        <Routes />
+      </NavigationContainer>
+    </AppointmentsProvider>
   );
 };
 

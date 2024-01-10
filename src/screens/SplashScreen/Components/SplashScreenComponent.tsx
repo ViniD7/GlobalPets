@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { View, Animated, Easing, Image, StyleSheet, Text } from 'react-native';
+import { Animated, Easing, StyleSheet } from 'react-native';
 import { Brand } from '../../../components/Logo/Brand';
 
 const SplashScreenComponent = () => {

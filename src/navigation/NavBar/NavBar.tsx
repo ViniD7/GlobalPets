@@ -1,14 +1,14 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, Image, StatusBar } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import styles from './styles';
 import { Veterinarians } from '../../screens/Home/Veterinarians/Veterinarians/Veterinarians';
-import { Scheduling } from '../../screens/Home/Scheduling/Scheduling';
 import { MyPets } from '../../screens/Home/MyPets/MyPets';
 import { UserProfile } from '../../screens/Home/UserProfile/userProfile';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DetailsVeterinary from '../../screens/Home/Veterinarians/DetailsVeterinary/DetailsVeterinary';
+import Scheduling from '../../screens/Home/Scheduling/Scheduling';
 
 
 const Stack = createNativeStackNavigator();
@@ -20,6 +20,15 @@ const VeterinariansNavigation = () => {
       initialRouteName="Veterinarians">
       <Stack.Screen name="Veterinarians" component={Veterinarians} />
       <Stack.Screen name="DetailsVeterinary" component={DetailsVeterinary} />
+    </Stack.Navigator>
+  );
+};
+const SchedulingNavigation = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="Veterinarians">
+      <Stack.Screen name="Scheduling" component={Scheduling} />
     </Stack.Navigator>
   );
 };
@@ -53,7 +62,7 @@ const NavBar = () => {
             tabBarStyle: barStyle,
           }}>
           <Tab.Screen
-            name="ActivitiesContainer"
+            name="VeterinariansNavigation"
             component={VeterinariansNavigation}
             options={{
               tabBarLabel: 'Activities',
@@ -65,8 +74,8 @@ const NavBar = () => {
             }}
           />
           <Tab.Screen
-            name="AddActividesContainer"
-            component={Scheduling}
+            name="SchedulingNavigation"
+            component={SchedulingNavigation}
             options={{
               tabBarLabel: 'Location',
               tabBarIcon: ({ focused }) => (

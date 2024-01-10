@@ -8,10 +8,14 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
     },
     title: {
+        flexDirection: 'row',
+        marginTop: 40,
+        gap: 10
+    },
+    textTitle: {
         color: 'white',
         fontSize: 18,
         fontWeight: '600',
-        marginTop: 40,
         marginBottom: 20
     },
     card: {
@@ -24,10 +28,15 @@ const styles = StyleSheet.create({
         gap: 5
     },
     text: {
-        color: 'white',
-        fontSize: 15,
-        fontWeight: '600'
-    }
+        color: 'rgb(137, 168, 211)',
+        fontSize: 13,
+        fontWeight: '500',
+        textAlign: 'center',
+        marginTop: 20
+    },
+    endScreen: {
+        height: 120
+    },
 });
 
 export default styles;

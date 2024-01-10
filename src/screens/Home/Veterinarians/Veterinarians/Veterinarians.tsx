@@ -3,9 +3,9 @@ import { View, ScrollView, Text, TextInput } from 'react-native';
 import { Card } from './components/Card';
 import styles from './styles';
 import Mock from '../../../../services/MOCK_DATA.json';
-import { Brand } from '../../../../components/Logo/Brand';
 import { useNavigation } from '@react-navigation/native'
 import unorm from 'unorm';
+import { Brand } from '../../../../components/Logo/Brand';
 
 interface VetData {
     id: number;
@@ -17,7 +17,7 @@ interface VetData {
 export const Veterinarians = () => {
     const [filteredText, setFilteredText] = useState<string>('');
     const [jsonData, setJsonData] = useState<VetData[]>([]);
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
 
     const loadJSON = async () => {
         try {

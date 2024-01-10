@@ -1,23 +1,80 @@
-import React from 'react';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, Image, TouchableOpacity, ToastAndroid } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
+import { useAppointments } from '../../../../context/AppointmentsContext/AppointmentsContext';
 import { Brand } from '../../../../components/Logo/Brand';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Feather from 'react-native-vector-icons/Feather';
-import { useNavigation } from '@react-navigation/native';
-
-
-const handleHourPress = (selectedHour: string) => {
-    console.log(`Hora selecionada: ${selectedHour}`);
-};
-
-interface IDetailsVeterinary {
+interface DetailsVeterinaryProps {
     route: any;
 }
 
-const DetailsVeterinary = ({ route }: IDetailsVeterinary) => {
+const DetailsVeterinary: React.FC<DetailsVeterinaryProps> = ({ route }) => {
     const { veterinarian } = route.params;
+    const [selectedHour, setSelectedHour] = useState<string | null>(null);
+    const { dispatch } = useAppointments();
+    const { navigate } = useNavigation<any>();
+
+    const handleHourPress = (hour: string) => {
+        console.log(`Hora selecionada: ${hour}`);
+        setSelectedHour(hour);
+    };
+
+    const renderAvailableHours = () => {
+        return veterinarian.available_hours.map((hour: string, index: number) => (
+            <TouchableOpacity
+                key={index}
+                onPress={() => handleHourPress(hour)}
+                style={[
+                    styles.button,
+                    selectedHour === hour ? styles.selectedHourButton : null,
+                ]}
+            >
+                <Text style={[styles.hour, selectedHour === hour ? styles.selectedHourText : null]}>
+                    {hour}
+                </Text>
+            </TouchableOpacity>
+        ));
+    };
+
+    const handleAppointmentPress = () => {
+        if (selectedHour) {
+            dispatch({
+                type: 'ADICIONAR_CONSULTA',
+                payload: {
+                    phone: veterinarian.Phone,
+                    full_name: veterinarian.full_name,
+                    office: veterinarian.office,
+                    email: veterinarian.email,
+                    date: veterinarian.date,
+                    selectedHour,
+                },
+            });
+
+            navigate('SchedulingNavigation', {
+                params: {
+                    phone: veterinarian.Phone,
+                    full_name: veterinarian.full_name,
+                    office: veterinarian.office,
+                    email: veterinarian.email,
+                    date: veterinarian.date,
+                    selectedHour,
+                },
+                screen: 'Scheduling',
+            });
+        } else {
+            ToastAndroid.showWithGravityAndOffset(
+                'Por favor, selecione uma hora antes de marcar a consulta.',
+                ToastAndroid.LONG,
+                ToastAndroid.BOTTOM,
+                25,
+                50
+            );
+        }
+    };
+
 
     return (
         <View style={styles.container}>
@@ -44,21 +101,14 @@ const DetailsVeterinary = ({ route }: IDetailsVeterinary) => {
                 </View>
                 <View style={styles.availableTimes}>
                     <Text style={styles.text}>Horários disponíveis</Text>
-                    <View style={styles.organizeButton}>
-                        {veterinarian.available_hours.map((hour, index) => (
-                            <TouchableOpacity key={index} onPress={() => handleHourPress(hour)} style={styles.button}>
-                                <Text style={styles.hour}>{hour}</Text>
-                            </TouchableOpacity>
-                        ))}
-                    </View>
+                    <View style={styles.organizeButton}>{renderAvailableHours()}</View>
                 </View>
             </View>
-            <TouchableOpacity style={styles.queryButton}>
+            <TouchableOpacity style={styles.queryButton} onPress={handleAppointmentPress}>
                 <Text style={styles.textButton}>MARCAR CONSULTA</Text>
             </TouchableOpacity>
         </View>
     );
-
 };
 
 export default DetailsVeterinary;

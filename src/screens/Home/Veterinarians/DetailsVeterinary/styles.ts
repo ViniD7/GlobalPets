@@ -40,17 +40,27 @@ const styles = StyleSheet.create({
     },
     button: {
         height: 50,
-        width: 100,
+        width: 90,
         borderRadius: 8,
         justifyContent: 'center',
         alignItems: 'center',
         borderWidth: 2,
         borderColor: 'white'
     },
+    selectedHourButton: {
+        height: 50,
+        width: 90,
+        borderRadius: 8,
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderWidth: 2.5,
+        borderColor: 'rgb(84, 169, 928)'
+    },
     organizeButton: {
         flexDirection: 'row',
         width: '100%',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        gap: 5
     },
     text: {
         color: 'white',
@@ -79,6 +89,11 @@ const styles = StyleSheet.create({
         gap: 30
     },
     hour: {
+        color: 'white',
+        fontSize: 16,
+        fontWeight: '500'
+    },
+    selectedHourText: {
         color: 'white',
         fontSize: 16,
         fontWeight: '500'

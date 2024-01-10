@@ -1,87 +1,43 @@
-import React, { useState } from 'react';
-import {
-    Text,
-    View,
-    Image,
-    TextInput,
-    TouchableOpacity,
-    Alert,
-} from 'react-native';
+import React from 'react';
+import { Text, View, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useNavigation } from '@react-navigation/native';
-import auth from '@react-native-firebase/auth'
 import { Brand } from '../../../components/Logo/Brand';
+import Input from '../components/Inputs/Inputs';
+import { Button } from '../components/Button/Button';
+import useSignUp from '../../../hooks/useSingUp';
+import { SubButton } from '../components/SubButton/SubButton';
 
 const SingUpScreen = () => {
-    const [hidePass, setHidePass] = useState(true);
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const navigation = useNavigation();
-
-    function singUp() {
-        auth().createUserWithEmailAndPassword(email, password).then((userCredential) => {
-            console.log('user', userCredential)
-        }).catch(error => {
-            if (error.code === 'auth/email-already-in-use') {
-                Alert.alert('email já existe')
-            }
-            if (error.code === 'auth/invalid-email') {
-                Alert.alert('email inválido')
-            }
-        })
-    }
+    const navigation = useNavigation<any>();
+    const { email, password, setEmail, setPassword, signUp } = useSignUp();
 
     return (
-        <>
-            <View style={styles.container}>
+        <View style={styles.container}>
+            <View style={styles.form}>
                 <Brand />
-                <View style={styles.eduTech}>
-                    <Text style={styles.textEduTech}>
-                        Criar nova conta
-                    </Text>
+                <View style={styles.title}>
+                    <Text style={styles.textEduTech}>Criar nova conta</Text>
                     <Text style={styles.slogan}>Preencha o formulário para continuar</Text>
-                    <TextInput
-                        style={styles.placeholder}
-                        placeholder="Email Address"
-                        placeholderTextColor={'rgb(90,90,90)'}
-                        value={email}
+                </View>
+                <View>
+                    <Input
+                        placeholder="E-mail"
                         onChangeText={setEmail}
-                    ></TextInput>
-                    <View>
-                        <TextInput
-                            style={styles.placeholder}
-                            placeholder="Password"
-                            placeholderTextColor={'rgb(90,90,90)'}
-                            value={password}
-                            onChangeText={setPassword}
-                            secureTextEntry={hidePass}></TextInput>
-                        <TouchableOpacity
-                            style={styles.hide}
-                            onPress={() => setHidePass(!hidePass)}>
-                            {hidePass ? (
-                                <MaterialCommunityIcons name="eye" size={22} color={'rgb(90,90,90)'} />
-                            ) : (
-                                <MaterialCommunityIcons
-                                    name="eye-off"
-                                    size={22}
-                                    color={'rgb(90,90,90)'}
-                                />
-                            )}
-                        </TouchableOpacity>
-                    </View>
+                        value={email}
+                        keyboard="email-address"
+                    />
+                    <Input
+                        id={2}
+                        placeholder="Senha"
+                        onChangeText={setPassword}
+                        value={password}
+                    />
                 </View>
-                <TouchableOpacity style={{ ...styles.entrar, marginTop: 100 }} onPress={singUp}>
-                    <Text style={styles.enter}>Continuar</Text>
-                </TouchableOpacity>
-                <View style={styles.singUp}>
-                    <Text style={styles.textSingUp}>Já possui cadastro ?</Text>
-                    <TouchableOpacity>
-                        <Text style={styles.textButtonSingUp} onPress={() => navigation.navigate('SingInScreen')}>Entrar</Text>
-                    </TouchableOpacity>
-                </View>
+                <Button title="Continuar" onPress={signUp} />
+                <SubButton title='Entrar' question='Já possui cadastro ?' onPress={() => navigation.navigate('SingInScreen')} />
             </View>
-        </>
+        </View>
     );
 };
 

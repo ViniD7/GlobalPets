@@ -6,7 +6,7 @@ import SplashScreenComponent from './Components/SplashScreenComponent';
 import { styles } from './styles';
 
 const SplashScreen = () => {
-    const navigation = useNavigation();
+    const navigation = useNavigation<any>();
     useEffect(() => {
         const timer = setTimeout(() => {
             navigation.navigate('NavBar');
