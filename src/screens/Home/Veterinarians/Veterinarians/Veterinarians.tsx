@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { View, ScrollView, Text, TextInput } from 'react-native';
+import React from 'react';
+import { View, ScrollView, TextInput } from 'react-native';
 import { Card } from './components/Card';
 import styles from './styles';
 import Mock from '../../../../services/MOCK_DATA.json';
-import { useNavigation } from '@react-navigation/native'
-import unorm from 'unorm';
+import { useNavigation } from '@react-navigation/native';
+import useFilter from '../../../../hooks/useFilter';
+import useJsonLoader from '../../../../hooks/useJsonLoader';
 import { Brand } from '../../../../components/Logo/Brand';
 
 interface VetData {
@@ -15,40 +16,12 @@ interface VetData {
 }
 
 export const Veterinarians = () => {
-    const [filteredText, setFilteredText] = useState<string>('');
-    const [jsonData, setJsonData] = useState<VetData[]>([]);
     const navigation = useNavigation<any>();
-
-    const loadJSON = async () => {
-        try {
-            const data: VetData[] = Mock;
-            setJsonData(data);
-        } catch (error) {
-            console.error('Erro ao carregar o JSON:', error);
-        }
-    };
-
-    useEffect(() => {
-        loadJSON();
-    }, []);
-
-    const handleTextChange = (text: string) => {
-        setFilteredText(text);
-    };
-
-    const removeAccents = (str: string) => {
-        return unorm.nfd(str).replace(/[\u0300-\u036f]/g, '');
-    };
-
-    const filterVeterinarians = () => {
-        const normalizedText = removeAccents(filteredText.toLowerCase());
-
-        return jsonData.filter(
-            (item) =>
-                removeAccents(item.full_name.toLowerCase()).includes(normalizedText) ||
-                removeAccents(item.office.toLowerCase()).includes(normalizedText)
-        );
-    };
+    const jsonData = useJsonLoader(Mock);
+    const { filteredText, handleTextChange, filterData } = useFilter({
+        data: jsonData,
+        filterKeys: ['full_name', 'office'],
+    });
 
     return (
         <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
@@ -61,7 +34,7 @@ export const Veterinarians = () => {
                 placeholderTextColor="#9B9B9B"
                 cursorColor={'rgb(137, 168, 211)'}
             />
-            {filterVeterinarians().map((item) => (
+            {filterData().map((item: VetData) => (
                 <Card
                     key={item.id.toString()}
                     name={item.full_name}
@@ -71,7 +44,6 @@ export const Veterinarians = () => {
                         navigation.navigate('DetailsVeterinary', { veterinarian: item });
                     }}
                 />
-
             ))}
             <View style={styles.endScreen} />
         </ScrollView>

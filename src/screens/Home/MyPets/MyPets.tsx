@@ -10,7 +10,6 @@ import { CardPets } from './CardPets/CardPets';
 import Images from '../../../constants/images';
 
 export const MyPets = () => {
-    const navigation = useNavigation<any>();
     return (
         <View style={styles.container}>
             <Brand />

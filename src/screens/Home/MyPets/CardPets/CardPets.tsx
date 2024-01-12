@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, ImageSourcePropType, Image } from 'react-native';
 import styles from './styles';
-import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface ICardPets {
@@ -12,7 +11,6 @@ interface ICardPets {
 }
 
 export const CardPets = ({ icon, name, race, image }: ICardPets) => {
-    const navigation = useNavigation<any>();
     return (
         <TouchableOpacity style={styles.card}>
             <Ionicons name="paw" size={25} color={'white'} style={styles.logo} />
