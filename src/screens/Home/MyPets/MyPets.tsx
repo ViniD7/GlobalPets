@@ -1,7 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
 import styles from './styles';
-import { useNavigation } from '@react-navigation/native'
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Brand } from '../../../components/Logo/Brand';
