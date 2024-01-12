@@ -7,16 +7,22 @@ const styles = StyleSheet.create({
         paddingTop: 30,
         paddingHorizontal: 20,
     },
-    title: {
+    titleContainer: {
         flexDirection: 'row',
         marginTop: 40,
-        gap: 10
+        justifyContent: 'space-between',
+        marginBottom: 20
+    },
+    title: {
+        flexDirection: 'row',
+        gap: 10,
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     textTitle: {
         color: 'white',
         fontSize: 18,
         fontWeight: '600',
-        marginBottom: 20
     },
     card: {
         width: '100%',
@@ -37,6 +43,19 @@ const styles = StyleSheet.create({
     endScreen: {
         height: 120
     },
+    clearAllButton: {
+        backgroundColor: 'white',
+        paddingVertical: 10,
+        paddingHorizontal: 20,
+        borderRadius: 8,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    clearAllButtonText: {
+        color: '#004E75',
+        fontSize: 16,
+        fontWeight: '500'
+    }
 });
 
 export default styles;

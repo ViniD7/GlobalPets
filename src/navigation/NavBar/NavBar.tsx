@@ -4,11 +4,11 @@ import { View, StatusBar } from 'react-native';
 import styles from './styles';
 import { Veterinarians } from '../../screens/Home/Veterinarians/Veterinarians/Veterinarians';
 import { MyPets } from '../../screens/Home/MyPets/MyPets';
-import { UserProfile } from '../../screens/Home/UserProfile/userProfile';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import DetailsVeterinary from '../../screens/Home/Veterinarians/DetailsVeterinary/DetailsVeterinary';
 import Scheduling from '../../screens/Home/Scheduling/Scheduling';
+import UserProfile from '../../screens/Home/UserProfile/userProfile';
 
 
 const Stack = createNativeStackNavigator();
@@ -86,7 +86,7 @@ const NavBar = () => {
             }}
           />
           <Tab.Screen
-            name="AttentionContainer"
+            name="MyPets"
             component={MyPets}
             options={{
               headerShown: false,
@@ -99,7 +99,7 @@ const NavBar = () => {
             }}
           />
           <Tab.Screen
-            name="NotificationsContainer"
+            name="UserProfile"
             component={UserProfile}
             options={{
               headerShown: false,

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Alert } from 'react-native';
+import { ToastAndroid } from 'react-native';
 import auth from '@react-native-firebase/auth';
 
 const useSignUp = () => {
@@ -13,10 +13,22 @@ const useSignUp = () => {
             })
             .catch(error => {
                 if (error.code === 'auth/email-already-in-use') {
-                    Alert.alert('E-mail já existe');
+                    ToastAndroid.showWithGravityAndOffset(
+                        'E-mail já existe',
+                        ToastAndroid.LONG,
+                        ToastAndroid.BOTTOM,
+                        25,
+                        50
+                    );
                 }
                 if (error.code === 'auth/invalid-email') {
-                    Alert.alert('E-mail inválido');
+                    ToastAndroid.showWithGravityAndOffset(
+                        'E-mail inválido',
+                        ToastAndroid.LONG,
+                        ToastAndroid.BOTTOM,
+                        25,
+                        50
+                    );
                 }
             });
     };

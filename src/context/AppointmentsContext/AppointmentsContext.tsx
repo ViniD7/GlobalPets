@@ -1,4 +1,3 @@
-// AppointmentsContext.tsx
 import React, { createContext, useReducer, useContext, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -18,6 +17,7 @@ interface AppointmentsState {
 type AppointmentsAction =
     | { type: 'ADICIONAR_CONSULTA'; payload: Appointment }
     | { type: 'DELETE_CONSULTA'; payload: { index: number } }
+    | { type: 'CLEAR_ALL_CONSULTAS' }
     | { type: 'RESTORE_APPOINTMENTS'; payload: AppointmentsState };
 
 interface AppointmentsContextType {
@@ -44,6 +44,11 @@ const appointmentsReducer = (state: AppointmentsState, action: AppointmentsActio
             return {
                 ...state,
                 consultas: newConsultas,
+            };
+        case 'CLEAR_ALL_CONSULTAS':
+            return {
+                ...state,
+                consultas: [],
             };
         case 'RESTORE_APPOINTMENTS':
             return action.payload;

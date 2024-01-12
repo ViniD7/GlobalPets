@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 35,
     },
     endScreen: {
-        height: 120
+        height: 140
     },
     input: {
         width: '100%',
@@ -118,7 +118,6 @@ const styles = StyleSheet.create({
         borderRadius: 15,
         width: '100%',
         height: 60,
-        marginBottom: 15,
         fontSize: 16,
         justifyContent: 'center',
         alignItems: 'center',

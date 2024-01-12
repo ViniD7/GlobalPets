@@ -1,4 +1,3 @@
-// LoadingScreen.tsx
 import React, { useEffect } from 'react';
 import { View, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
@@ -11,7 +10,6 @@ const SplashScreen = () => {
         const timer = setTimeout(() => {
             navigation.navigate('NavBar');
         }, 1500);
-
         return () => clearTimeout(timer);
     }, [navigation]);
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, TouchableOpacity, ToastAndroid } from 'react-native';
+import { View, Text, Image, TouchableOpacity, ToastAndroid, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 import { useAppointments } from '../../../../context/AppointmentsContext/AppointmentsContext';
@@ -77,7 +77,8 @@ const DetailsVeterinary: React.FC<DetailsVeterinaryProps> = ({ route }) => {
 
 
     return (
-        <View style={styles.container}>
+
+        <ScrollView style={styles.container}>
             <Brand />
             <View style={styles.card}>
                 <View style={styles.veterinarian}>
@@ -107,7 +108,8 @@ const DetailsVeterinary: React.FC<DetailsVeterinaryProps> = ({ route }) => {
             <TouchableOpacity style={styles.queryButton} onPress={handleAppointmentPress}>
                 <Text style={styles.textButton}>MARCAR CONSULTA</Text>
             </TouchableOpacity>
-        </View>
+            <View style={styles.endScreen} />
+        </ScrollView>
     );
 };
 

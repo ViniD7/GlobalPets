@@ -8,12 +8,15 @@ const useSignIn = () => {
 
     const signIn = (navigation) => {
         auth().signInWithEmailAndPassword(email, password)
-            .then(() => navigation.navigate('SplashScreen'))
+            .then(() => {
+                console.log('Login bem-sucedido. Navegando para SplashScreen...');
+                navigation.navigate('SplashScreen');
+            })
             .catch(error => {
-                console.log(error);
-                if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                console.log('Erro durante o login:', error.code);
+                if (error.code === 'auth/invalid-email' || error.code === 'auth/wrong-password') {
                     ToastAndroid.showWithGravityAndOffset(
-                        'Email ou senha inválidos',
+                        'E-mail ou Senha inválidos',
                         ToastAndroid.LONG,
                         ToastAndroid.BOTTOM,
                         25,
@@ -22,7 +25,6 @@ const useSignIn = () => {
                 }
             });
     };
-
     return {
         email,
         password,
@@ -33,3 +35,4 @@ const useSignIn = () => {
 };
 
 export default useSignIn;
+

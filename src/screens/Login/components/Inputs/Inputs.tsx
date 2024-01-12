@@ -43,6 +43,7 @@ const Input = ({
                     value={value !== undefined ? value : inputValue}
                     keyboardType={keyboard}
                     maxLength={maxLength}
+                    cursorColor={'rgb(84, 144, 228)'}
                 />
                 {id === 2 && (
                     <TouchableOpacity onPress={() => setHidePass(!hidePass)}>
