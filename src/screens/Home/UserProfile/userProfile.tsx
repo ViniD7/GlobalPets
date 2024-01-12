@@ -5,6 +5,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
 import Feather from 'react-native-vector-icons/Feather';
 import { Brand } from '../../../components/Logo/Brand';
+import Images from '../../../constants/images';
 
 
 const UserProfile = () => {
@@ -14,9 +15,9 @@ const UserProfile = () => {
             <Brand />
             <View style={styles.card}>
                 <View style={styles.veterinarian}>
-                    <Image source={{ uri: 'https://i.pinimg.com/564x/e7/5b/41/e75b41ec9be4ff5303804a35466544e3.jpg' }} style={styles.imageCard} resizeMode='center' />
+                    <Image source={Images.user} style={styles.imageCard} resizeMode='center' />
                     <View style={styles.nameContainer}>
-                        <Text style={styles.name}>Enzo Marielli</Text>
+                        <Text style={styles.name}>Renato Marielli</Text>
                         <FontAwesome6 name='user-large' color={'white'} size={12} />
                     </View>
                 </View>

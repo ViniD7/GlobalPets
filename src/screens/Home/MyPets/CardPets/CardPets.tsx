@@ -1,15 +1,14 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
+import { View, Text, TouchableOpacity, ImageSourcePropType, Image } from 'react-native';
 import styles from './styles';
-import { useNavigation } from '@react-navigation/native'
-import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
+import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 interface ICardPets {
-    name: string
-    race: string
-    icon: JSX.Element
-    image: string
+    name: string;
+    race: string;
+    icon: JSX.Element;
+    image: ImageSourcePropType;
 }
 
 export const CardPets = ({ icon, name, race, image }: ICardPets) => {
@@ -17,7 +16,7 @@ export const CardPets = ({ icon, name, race, image }: ICardPets) => {
     return (
         <TouchableOpacity style={styles.card}>
             <Ionicons name="paw" size={25} color={'white'} style={styles.logo} />
-            <Image source={{ uri: image }} style={styles.imageCard} resizeMode='contain' />
+            <Image source={image} style={styles.imageCard} resizeMode='contain' />
             <View style={styles.dataPet}>
                 <Text style={styles.name}>{name}</Text>
                 <View style={styles.data}>

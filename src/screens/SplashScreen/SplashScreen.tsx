@@ -3,6 +3,7 @@ import { View, ImageBackground } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import SplashScreenComponent from './Components/SplashScreenComponent';
 import { styles } from './styles';
+import Images from '../../constants/images';
 
 const SplashScreen = () => {
     const navigation = useNavigation<any>();
@@ -19,7 +20,7 @@ const SplashScreen = () => {
 
         }}>
             <ImageBackground
-                source={{ uri: 'https://i.pinimg.com/564x/2d/03/f3/2d03f3a14a13037969b884f7cdd4d727.jpg' }}
+                source={Images.splash}
                 style={{
                     flex: 1,
                 }}>
