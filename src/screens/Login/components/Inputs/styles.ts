@@ -17,7 +17,20 @@ const styles = StyleSheet.create({
         fontWeight: '600',
         fontSize: 16,
         width: '90%'
-    }
+    },
+    inputClient: {
+        backgroundColor: 'rgba(255, 255, 255, 0.04)',
+    },
+    inputEmployee: {
+        backgroundColor: 'rgba(0, 60, 255, 0.11)', 
+    },
+    logoClient: {
+        backgroundColor: '#1c528c',
+    },
+    logoEmployee: {
+        backgroundColor: 'orange',
+    },
+    
 });
 
 export default styles;

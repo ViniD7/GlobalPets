@@ -1,4 +1,4 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 
 const styles = StyleSheet.create({
     input: {
@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
         },
         shadowOpacity: 0.58,
         shadowRadius: 4.65,
-
         elevation: 6,
     },
     enter: {
@@ -41,21 +40,27 @@ const styles = StyleSheet.create({
     },
     hide: { position: 'absolute', bottom: 18, right: 15 },
     container: {
-        backgroundColor: 'rgb(11, 11, 22)',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         paddingVertical: 40
     },
+    clientMode: {
+        backgroundColor: 'rgb(11, 11, 22)',
+    },
+    employeeMode: {
+        backgroundColor: 'rgb(223, 222, 222)',
+    },
     slogan: {
-        color: 'rgb(190,190,190)',
+        color: '#1c528c',
         fontSize: 16,
         letterSpacing: 0.5,
         fontWeight: '700',
     },
     singUp: {
-        flexDirection: 'row',
-        marginTop: 30
+        marginTop: 30,
+        alignItems: 'center',
+        gap: 10
     },
     textSingUp: {
         color: 'rgb(190,190,190)',
@@ -72,7 +77,56 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     brand: {
-        gap: 5
+        gap: 5,
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    toggleContainer: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        // width: '100%',
+        marginBottom: 20,
+    },
+    toggleLabel: {
+        color: '#FFF',
+        fontSize: 16,
+        fontWeight: '600',
+    },
+    clientText: {
+        color: '#FFF'
+    },
+    employeeText: {
+        color:"#1c528c"
+    },
+    switchButton: {
+        flexDirection: 'row',
+        backgroundColor: "#1c528c",
+        borderColor: "rgb(84, 144, 228)",
+        borderWidth: 0.2,
+        height: 35,
+        width: 75,
+        borderRadius: 20,
+        alignItems: 'center',
+        paddingRight: 7,
+        paddingLeft: 10,
+        justifyContent: 'space-between',
+        shadowColor: "rgb(16, 70, 145)",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.58,
+        shadowRadius: 4.65,
+
+        elevation: 6,
+    },
+    ballButton: {
+        height: 25,
+        width: 25,
+        backgroundColor: "white",
+        borderRadius: 90,
+        position: 'absolute'
     }
 });
 

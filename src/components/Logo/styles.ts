@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
         marginBottom: 15,
         gap: 10
     },
-    text: { fontSize: 30, fontWeight: '600', color: '#FFF' },
+    text: { fontSize: 30, fontWeight: '600' },
     slogan: {
         color: 'rgb(190,190,190)',
         fontSize: 16,
@@ -24,6 +24,13 @@ const styles = StyleSheet.create({
         tintColor: '#FFF',
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    logoClient: {
+        backgroundColor: 'transparent',
+    },
+    logoEmployee: {
+        backgroundColor: '#1c528c',
+        borderColor: 'rgb(84, 144, 228)',
     },
 });
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { View, TextInput, TouchableOpacity } from 'react-native';
 import styles from './styles';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -11,6 +11,7 @@ interface IInput {
     keyboard?: any;
     maxLength?: number;
     value?: string;
+    isClient: boolean; 
 }
 
 const Input = ({
@@ -20,6 +21,7 @@ const Input = ({
     keyboard,
     maxLength,
     value,
+    isClient, 
 }: IInput) => {
     const [hidePass, setHidePass] = useState(true);
     const [inputValue, setInputValue] = useState('');
@@ -33,24 +35,39 @@ const Input = ({
 
     return (
         <View>
-            <View style={styles.input}>
+            <View
+                style={[
+                    styles.input,
+                    isClient
+                        ? styles.inputClient 
+                        : styles.inputEmployee, 
+                ]}
+            >
                 <TextInput
-                    style={styles.placeholder}
+                    style={{...styles.placeholder, color: isClient ? "white" : "#1c528c"}}
                     placeholder={placeholder}
-                    placeholderTextColor={'#9B9B9B'}
+                    placeholderTextColor={isClient ? '#9B9B9B' : '#1c528c'}
                     secureTextEntry={id === 2 ? hidePass : false}
                     onChangeText={handleInputChange}
                     value={value !== undefined ? value : inputValue}
                     keyboardType={keyboard}
                     maxLength={maxLength}
-                    cursorColor={'rgb(84, 144, 228)'}
+                    cursorColor={isClient ? 'rgb(84, 144, 228)' : 'white'}
                 />
                 {id === 2 && (
                     <TouchableOpacity onPress={() => setHidePass(!hidePass)}>
                         {hidePass ? (
-                            <MaterialCommunityIcons name="eye" size={22} color={'rgb(90,90,90)'} />
+                            <MaterialCommunityIcons
+                                name="eye"
+                                size={22}
+                                color={isClient ? 'rgb(90,90,90)' : '#1c528c'}
+                            />
                         ) : (
-                            <MaterialCommunityIcons name="eye-off" size={22} color={'rgb(90,90,90)'} />
+                            <MaterialCommunityIcons
+                                name="eye-off"
+                                size={22}
+                                color={isClient ? 'rgb(90,90,90)' : '#1c528c'}
+                            />
                         )}
                     </TouchableOpacity>
                 )}

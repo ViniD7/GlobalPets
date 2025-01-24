@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
         fontWeight: '500'
     },
     dataProfissional: {
-        gap: 8
+        gap: 8,
     },
     data: {
         flexDirection: 'row',
@@ -42,7 +42,8 @@ const styles = StyleSheet.create({
     logo: {
         position: 'absolute',
         top: 15,
-        right: 20
+        right: 20,
+        
     }
 });
 
