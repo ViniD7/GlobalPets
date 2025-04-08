@@ -5,11 +5,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import Routes from './src/navigation/routes';
 import { AppointmentsProvider } from './src/context/AppointmentsContext/AppointmentsContext';
 
+
+
 const App = () => {
   return (
     <AppointmentsProvider>
       <NavigationContainer>
-        <StatusBar backgroundColor="transparent" translucent={true} />
+        <StatusBar backgroundColor="transparent" translucent={true}/>
         <Routes />
       </NavigationContainer>
     </AppointmentsProvider>

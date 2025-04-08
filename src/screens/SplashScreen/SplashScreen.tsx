@@ -9,7 +9,7 @@ const SplashScreen = () => {
     const navigation = useNavigation<any>();
     useEffect(() => {
         const timer = setTimeout(() => {
-            navigation.navigate('NavBar');
+            navigation.navigate('Dashboard');
         }, 1500);
         return () => clearTimeout(timer);
     }, [navigation]);

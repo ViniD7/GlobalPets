@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Text, View, Switch, TouchableOpacity } from 'react-native';
+import { Text, View, Switch, TouchableOpacity, StatusBar } from 'react-native';
 import styles from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { Brand } from '../../../components/Logo/Brand';
@@ -21,6 +21,7 @@ const SingInScreen = () => {
 
     return (
         <View style={[styles.container, isClient ? styles.clientMode : styles.employeeMode]}>
+            <StatusBar backgroundColor="transparent" translucent={true} barStyle={isClient? 'light-content' : 'dark-content'} />
             <View style={styles.form}>
                 <View style={styles.brand}>
                 <Brand isClient={isClient} />
@@ -48,10 +49,10 @@ const SingInScreen = () => {
                 <View style={styles.singUp}>
                     <Button onPress={() => signIn(navigation)} title="Entrar" />
                 <TouchableOpacity style={styles.switchButton} onPress={toggleMode}>
-                    <View style={{...styles.ballButton, left: isClient ? 5 : 43}} />
-                    <FontAwesome6 name='user-doctor' size={19} color={"#FFF"}/>
-                    <MaterialCommunityIcons name='dog' color={"#FFF"} size={22}/>
-                </TouchableOpacity>
+                         <View style={{...styles.ballButton, left: isClient ? 6 : 43}} />
+                         <FontAwesome6 name='user-doctor' size={19} color={"#FFF"}/>
+                         <MaterialCommunityIcons name='dog' color={"#FFF"} size={22}/>
+                     </TouchableOpacity>
                 </View>
                 <SubButton
                     title="Cadastre-se"

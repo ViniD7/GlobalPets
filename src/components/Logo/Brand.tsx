@@ -23,20 +23,22 @@ export const Brand = ({ isClient }: IBrand) => {
                         name="paw"
                         size={30}
                         color={isClient ? 'white' : 'white'}
+
                     />
                 </View>
                 <View style={{ flexDirection: 'row' }}>
-                    <Text style={{...styles.text, color: isClient ? 'white' : '#1c528c'}}>
-                        Global
+                    <Text style={{...styles.text, 
+                        color: isClient 
+                        ? 'white' 
+                        : '#1c528c'
+                        }}>
+                        Central
                     </Text>
-                    <Text
-                        style={{
-                            ...styles.text,
+                    <Text style={{ ...styles.text,
                             color: isClient
                                 ? 'rgb(84, 144, 228)'
                                 : 'rgb(84, 144, 228)',
-                        }}
-                    >
+                        }}>
                         {isClient ? "Pet's" : 'Vet'}
                     </Text>
                 </View>

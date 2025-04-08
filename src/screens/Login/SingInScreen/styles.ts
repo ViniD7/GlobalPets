@@ -102,11 +102,9 @@ const styles = StyleSheet.create({
     switchButton: {
         flexDirection: 'row',
         backgroundColor: "#1c528c",
-        borderColor: "rgb(84, 144, 228)",
-        borderWidth: 0.2,
         height: 35,
         width: 75,
-        borderRadius: 20,
+        borderRadius: 12,
         alignItems: 'center',
         paddingRight: 7,
         paddingLeft: 10,
@@ -120,13 +118,27 @@ const styles = StyleSheet.create({
         shadowRadius: 4.65,
 
         elevation: 6,
+        alignSelf: 'flex-end'
     },
     ballButton: {
         height: 25,
         width: 25,
         backgroundColor: "white",
-        borderRadius: 90,
+        borderRadius: 8,
         position: 'absolute'
+    },
+    switchContainer: {
+        // backgroundColor: "red",
+        width: '100%',
+        paddingHorizontal: 20,
+        alignItems: 'center',
+        // flexDirection: "row"
+        justifyContent: "center",
+        gap: 20
+    },
+    textSwitch: {
+        color: "#FFF",
+        fontWeight: "800"
     }
 });
 

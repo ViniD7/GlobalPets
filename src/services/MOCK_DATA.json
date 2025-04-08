@@ -77,7 +77,7 @@
     "Avatar": "https://i.pinimg.com/236x/17/60/37/176037d52fa8c9805349a6194dde9163.jpg",
     "office": "Cirurgião Veterinário",
     "date": "18/12/2023",
-    "available_hours": ["09:00", "14:30", "17:00"]
+    "available_hours": ["09:00", "14:30", "17:00"] 
   },
   {
     "id": 9,

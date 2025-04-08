@@ -4,6 +4,7 @@ import SingInScreen from '../screens/Login/SingInScreen/SingInScreen';
 import SingUpScreen from '../screens/Login/SingUpScreen/SingUpScreen';
 import SplashScreen from '../screens/SplashScreen/SplashScreen';
 import NavBar from './NavBar/NavBar';
+import { Dashboard } from '../screens/Dashboard/Dashboard';
 
 
 const Stack = createNativeStackNavigator();
@@ -17,6 +18,7 @@ const Routes = () => {
             <Stack.Screen name="SingUpScreen" component={SingUpScreen} />
             <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="NavBar" component={NavBar} />
+            <Stack.Screen name="Dashboard" component={Dashboard} />
         </Stack.Navigator>
     );
 };
