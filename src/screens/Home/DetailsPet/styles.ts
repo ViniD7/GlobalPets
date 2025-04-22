@@ -1,6 +1,14 @@
 import { StyleSheet } from 'react-native';
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'rgb(11, 11, 22)',
+        paddingTop: 30,
+        paddingHorizontal: 20,
+        gap: 50
+    },
+
     card: {
         height: 140,
         width: '100%',
@@ -12,7 +20,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         gap: 15,
         marginBottom: 20,
-        overflow: 'hidden'
     },
     imageCard: {
         height: 95,
@@ -32,8 +39,8 @@ const styles = StyleSheet.create({
         fontSize: 14,
         fontWeight: '500'
     },
-    dataProfissional: {
-        gap: 8,
+    dataPet: {
+        gap: 8
     },
     data: {
         flexDirection: 'row',
@@ -43,9 +50,8 @@ const styles = StyleSheet.create({
     logo: {
         position: 'absolute',
         top: 15,
-        right: 20,
-        
-    }
+        right: 20
+    },
 });
 
 export default styles;

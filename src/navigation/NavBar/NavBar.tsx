@@ -1,22 +1,22 @@
 import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { View, StatusBar } from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {View, StatusBar} from 'react-native';
 import styles from './styles';
-import { Veterinarians } from '../../screens/Home/Veterinarians/Veterinarians/Veterinarians';
-import { MyPets } from '../../screens/Home/MyPets/MyPets';
+import {Veterinarians} from '../../screens/Home/Veterinarians/Veterinarians/Veterinarians';
+import {MyPets} from '../../screens/Home/MyPets/MyPets';
 import FontAwesome6 from 'react-native-vector-icons/FontAwesome6';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import DetailsVeterinary from '../../screens/Home/Veterinarians/DetailsVeterinary/DetailsVeterinary';
 import Scheduling from '../../screens/Home/Scheduling/Scheduling';
 import UserProfile from '../../screens/Home/UserProfile/userProfile';
-
+import {DetailsPets} from '../../screens/Home/DetailsPet/DetailsPet';
 
 const Stack = createNativeStackNavigator();
 
 const VeterinariansNavigation = () => {
   return (
     <Stack.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{headerShown: false}}
       initialRouteName="Veterinarians">
       <Stack.Screen name="Veterinarians" component={Veterinarians} />
       <Stack.Screen name="DetailsVeterinary" component={DetailsVeterinary} />
@@ -26,13 +26,22 @@ const VeterinariansNavigation = () => {
 const SchedulingNavigation = () => {
   return (
     <Stack.Navigator
-      screenOptions={{ headerShown: false }}
+      screenOptions={{headerShown: false}}
       initialRouteName="Veterinarians">
       <Stack.Screen name="Scheduling" component={Scheduling} />
     </Stack.Navigator>
   );
 };
-
+const MyPetsNavigation = () => {
+  return (
+    <Stack.Navigator
+      screenOptions={{headerShown: false}}
+      initialRouteName="MyPets">
+      <Stack.Screen name="MyPets" component={MyPets} />
+      <Stack.Screen name="DetailsPets" component={DetailsPets} />
+    </Stack.Navigator>
+  );
+};
 
 const Tab = createBottomTabNavigator();
 
@@ -43,15 +52,14 @@ const barStyle = {
   backgroundColor: '#004E75',
   borderTopLeftRadius: 24,
   borderTopRightRadius: 24,
-  borderTopColor: '#004E75'
+  borderTopColor: '#004E75',
 };
 
 const NavBar = () => {
-
   return (
     <>
-      <StatusBar barStyle='light-content' />
-      <View style={{ flex: 1 }}>
+      <StatusBar barStyle="light-content" />
+      <View style={{flex: 1}}>
         <Tab.Navigator
           tabBarOptions={{
             keyboardHidesTabBar: true,
@@ -66,9 +74,13 @@ const NavBar = () => {
             component={VeterinariansNavigation}
             options={{
               tabBarLabel: 'Activities',
-              tabBarIcon: ({ focused }) => (
-                <View style={{ ...styles.tabContainer, backgroundColor: focused ? '#4077A1' : 'transparent' }}>
-                  <FontAwesome6 name='user-doctor' color={'white'} size={30} />
+              tabBarIcon: ({focused}) => (
+                <View
+                  style={{
+                    ...styles.tabContainer,
+                    backgroundColor: focused ? '#4077A1' : 'transparent',
+                  }}>
+                  <FontAwesome6 name="user-doctor" color={'white'} size={30} />
                 </View>
               ),
             }}
@@ -78,22 +90,34 @@ const NavBar = () => {
             component={SchedulingNavigation}
             options={{
               tabBarLabel: 'Location',
-              tabBarIcon: ({ focused }) => (
-                <View style={{ ...styles.tabContainer, backgroundColor: focused ? '#4077A1' : 'transparent' }}>
-                  <FontAwesome6 name='clipboard-list' color={'white'} size={30} />
+              tabBarIcon: ({focused}) => (
+                <View
+                  style={{
+                    ...styles.tabContainer,
+                    backgroundColor: focused ? '#4077A1' : 'transparent',
+                  }}>
+                  <FontAwesome6
+                    name="clipboard-list"
+                    color={'white'}
+                    size={30}
+                  />
                 </View>
               ),
             }}
           />
           <Tab.Screen
-            name="MyPets"
-            component={MyPets}
+            name="MyPetsNavigation"
+            component={MyPetsNavigation}
             options={{
               headerShown: false,
               tabBarLabel: 'InviteWin',
-              tabBarIcon: ({ focused }) => (
-                <View style={{ ...styles.tabContainer, backgroundColor: focused ? '#4077A1' : 'transparent' }}>
-                  <FontAwesome6 name='dog' color={'white'} size={30} />
+              tabBarIcon: ({focused}) => (
+                <View
+                  style={{
+                    ...styles.tabContainer,
+                    backgroundColor: focused ? '#4077A1' : 'transparent',
+                  }}>
+                  <FontAwesome6 name="dog" color={'white'} size={30} />
                 </View>
               ),
             }}
@@ -104,9 +128,13 @@ const NavBar = () => {
             options={{
               headerShown: false,
               tabBarLabel: 'InviteWin',
-              tabBarIcon: ({ focused }) => (
-                <View style={{ ...styles.tabContainer, backgroundColor: focused ? '#4077A1' : 'transparent' }}>
-                  <FontAwesome6 name='user-large' color={'white'} size={30} />
+              tabBarIcon: ({focused}) => (
+                <View
+                  style={{
+                    ...styles.tabContainer,
+                    backgroundColor: focused ? '#4077A1' : 'transparent',
+                  }}>
+                  <FontAwesome6 name="user-large" color={'white'} size={30} />
                 </View>
               ),
             }}
